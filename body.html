@@ -1,0 +1,44 @@
+<a-scene
+  xrextras-gesture-detector
+  landing-page
+  xrextras-loading
+  xrextras-runtime-error
+  renderer="colorManagement:true; webgl2: true;"
+  xrweb="disableWorldTracking: true">
+  <a-assets>
+    <a-asset-item id="jelly-glb" src="assets/jellyfish-model.glb"></a-asset-item>
+    <img id="jelly-thumb" src="assets/video-thumbnail.jpg">
+    <video
+      id="jelly-video"
+      autoplay
+      muted
+      crossorigin="anonymous"
+      loop="true"
+      src="assets/jellyfish-video.mp4">
+    </video>
+  </a-assets>
+  <a-camera
+    position="0 4 10"
+    raycaster="objects: .cantap"
+    cursor="fuse: false; rayOrigin: mouse;">
+  </a-camera>
+  <a-light type="directional" intensity="0.5" position="1 1 1"></a-light>
+  <a-light type="ambient" intensity="0.7"></a-light>
+  <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
+  <xrextras-named-image-target name="video-target">
+    <a-entity 
+      xrextras-play-video="video: #jelly-video; thumb: #jelly-thumb; canstop: true"
+      geometry="primitive: plane; height: 1; width: 0.79;"
+    ></a-entity>
+  </xrextras-named-image-target>
+  <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
+  <xrextras-named-image-target name="card">
+    <!-- Add a child entity that can be rotated independently of the image target. -->
+ <a-entity position="0 0 -2">
+          <a-text value="age: 25 years old" position="0 0.3 0" scale="0.8 0.8 0.8"></a-text>
+          <a-text value="name: GokiKato" position="0 0 0"></a-text>
+          <a-text value="ID: 0x20f115dce7452A853824f302d8985aaCB645C4a9" position="0 -0.3 0"></a-text>
+          <a-text value="past participation: Global, Bogota, India, Dubai, Taipei, Tokyo" position="0 -0.6 0"></a-text>
+        </a-entity>
+  </xrextras-named-image-target>
+</a-scene>
